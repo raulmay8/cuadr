@@ -2,21 +2,22 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../../database/database.js";
 import { Tablero } from "./Tablero.js";
 
-export const TipoTablero = sequelize.define("TipoTableros", {
+export const Cabecera = sequelize.define('Cabeceras', {
     id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
         autoIncrement:true
     },
-    name:{
+    nombre:{
         type:DataTypes.STRING
     }
+    
 })
-TipoTablero.hasMany(Tablero,{
-    foreignKey: 'tipoTableroId',
+Tablero.hasOne(Cabecera,{
+    foreignKey: 'tableroId',
     sourceKey: 'id'
 })
-Tablero.belongsTo(TipoTablero,{
-    foreignKey: 'tipoTableroId',
+Cabecera.belongsTo(Tablero,{
+    foreignKey: 'tableroId',
     targetId: 'id'
 })

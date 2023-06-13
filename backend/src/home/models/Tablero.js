@@ -7,10 +7,10 @@ export const Tablero = sequelize.define('Tableros', {
         primaryKey:true,
         autoIncrement:true
     },
-    name:{
+    sistema:{
         type:DataTypes.STRING
     },
-    capacidad:{
-        type:DataTypes.STRING
+    fase:{
+        type:DataTypes.INTEGER
     }
 })

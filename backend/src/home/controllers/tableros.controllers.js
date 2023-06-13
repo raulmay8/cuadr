@@ -26,12 +26,10 @@ export const getTablero = async (req, res) =>{
 }
 
 export const createTablero = async (req, res) =>{
-    const {name, capacidad, tipoTableroId} = req.body
+    const {sistema, fase} = req.body
     try {
         const newTablero = await Tablero.create({
-            name,
-            capacidad,
-            tipoTableroId
+            sistema, fase
         })
         res.json(newTablero) 
     } catch (error) {
@@ -42,12 +40,11 @@ export const createTablero = async (req, res) =>{
 export const updateTablero = async (req, res) => {
     try {
         const {id} = req.params;
-        const {name, capacidad, tipoTableroId} = req.body;
+        const {nombre, fase} = req.body;
 
         const tablero = await Tablero.findByPk(id);
-        tablero.name=name;
-        tablero.capacidad=capacidad;
-        tablero.tipoTableroId=tipoTableroId;
+        tablero.nombre=nombre;
+        tablero.fase=fase;
         await tablero.save();
         res.json(tablero)
     } catch (error) {
